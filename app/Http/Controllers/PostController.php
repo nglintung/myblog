@@ -103,4 +103,16 @@ class PostController extends Controller
 
         return redirect(route('posts.index'));
     }
+
+    /**
+     * Display Trashed Posts
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $trashed = Post::withTrashed()->get();
+
+        return view('posts.index')->with('posts', $trashed);
+    }
 }

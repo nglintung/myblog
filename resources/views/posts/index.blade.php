@@ -26,14 +26,18 @@
                         </td>
                         <td> {{$post->title}} </td>
                         <td>
+                        @if(!$post->trashed())
                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             {{-- <button data-dismiss="modal" onclick="handleDelete({{ $post->id }})" data-target="#deleteModal" class="btn btn-sm btn-danger ml-1">Delete</button> --}}
+                        @endif
                         </td>
                         <td>
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Trash</button>
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    {{ $post->trashed() ? 'Delete': 'Trash' }}
+                                </button>
                             </form>
                         </td>
                     </tr>
