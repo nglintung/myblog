@@ -9,6 +9,7 @@
             Posts
         </div>
         <div class="card-body">
+            @if($posts->count() > 0)
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -44,6 +45,10 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+            <h3 class="text-center">No Posts Yet</h3>
+            @endif
+
 
             <!-- Modal -->
             {{-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
